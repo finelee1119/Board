@@ -1,5 +1,5 @@
 function check() {
-    if(document.getElementById("title").value.length == 0) {
+    if(document.getElementById("title").value.trim().length == 0) {
         alert("제목이 입력되지 않았습니다.")
         document.getElementById("title").focus();
         return false
