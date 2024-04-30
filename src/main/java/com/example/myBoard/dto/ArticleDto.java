@@ -1,7 +1,6 @@
 package com.example.myBoard.dto;
 
 import com.example.myBoard.entity.Article;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
