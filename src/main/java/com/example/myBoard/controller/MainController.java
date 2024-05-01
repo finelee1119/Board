@@ -23,4 +23,6 @@ public class MainController {
         model.addAttribute("dto", lists);
         return "articles/show_all";
     }
+
+
 }
