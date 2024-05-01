@@ -31,11 +31,16 @@ class UsersRepositoryTest {
                 .forEach(users -> System.out.println(users));
     }
 
+    @Test
+    void 문제1() {
+        usersRepository.findByNameLikeAndGenderOrNameLikeAndGender("%w%", Gender.Female, "%m%", Gender.Female)
+                .forEach(users -> System.out.println(users));
+    }
+
     //문제 2. 이메일에 net을 포함하는 데이터 건수를 출력하시오.
     @Test
     void findByEmailContains() {
-        usersRepository.findByEmailContains("net")
-                .forEach(users -> System.out.println(users));
+        System.out.println(usersRepository.findByEmailContains("net").stream().count());
     }
 
     //문제 3. 가장 최근 한달이내에 업데이트된 자료 중 이름 첫자가 "J"인 자료를 출력하시오.
@@ -79,6 +84,16 @@ class UsersRepositoryTest {
             LocalDateTime updatedAt = user.getUpdatedAt();
             LocalDateTime createdAt = user.getCreatedAt();
             if (updatedAt.isBefore(createdAt)) {
+                System.out.println(user);
+            }
+        }
+    }
+
+    @Test
+    void 문제6() {
+        List<Users> users = usersRepository.findAll();
+        for(Users user : users) {
+            if(user.getUpdatedAt().isBefore(user.getCreatedAt())) {
                 System.out.println(user);
             }
         }
@@ -136,8 +151,8 @@ class UsersRepositoryTest {
     //문제11. 지난달의 모든 자료를 검색하여 출력하시오.
     @Test
     void findByCreatedAtBetweenOrderByCreatedAtAsc() {
-        LocalDate currentDate = LocalDate.now(); // 현재 날짜
-        YearMonth lastMonth = YearMonth.from(currentDate.minusMonths(1)); // 지난 달
+        LocalDate baseDate = LocalDate.now(); // 현재 날짜
+        YearMonth lastMonth = YearMonth.from(baseDate.minusMonths(1)); // 지난 달
         LocalDateTime startOfMonth = lastMonth.atDay(1).atStartOfDay(); // 지난 달의 시작일
         LocalDateTime endOfMonth = lastMonth.atEndOfMonth().atTime(23, 59, 59); // 지난 달의 마지막일
 

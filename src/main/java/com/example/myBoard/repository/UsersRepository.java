@@ -13,6 +13,8 @@ public interface UsersRepository extends JpaRepository<Users,Long> {
     //문제 1. 여성의 이름 중 "w"또는 "m"을 포함하는 자료를 검색하시오.
     List<Users> findByGenderAndNameContains(Gender gender, String name);
 
+    List<Users> findByNameLikeAndGenderOrNameLikeAndGender(String str1, Gender gender1, String str2, Gender gender2);
+
     //문제 2. 이메일에 net을 포함하는 데이터 건수를 출력하시오.
     List<Users> findByEmailContains(String email);
 
