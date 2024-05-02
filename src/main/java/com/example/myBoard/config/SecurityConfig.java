@@ -28,12 +28,12 @@ public class SecurityConfig {
                     .loginPage("/user/login")
                     .loginProcessingUrl("/login")
 //                    .usernameParameter("email")
-                    .defaultSuccessUrl("/"))
+                    .defaultSuccessUrl("/articles/paging", true))
 
-            .logout((out) -> out
+            .logout(out -> out
                     .logoutSuccessUrl("/")
-                    .logoutUrl("/logout")
-            );
+                    .logoutUrl("/logout"))
+            .csrf(csfr -> csfr.disable());
         return http.build();
     }
 }
