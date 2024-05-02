@@ -18,18 +18,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
-            .authorizeHttpRequests((request) ->request
+            .authorizeHttpRequests((request) -> request
                     .requestMatchers("/css/**", "/js/**", "/images/").permitAll()
                     .requestMatchers("/user/**").permitAll()
-                    .requestMatchers("/**").permitAll())
-//                    .anyRequest().authenticated())
+//                    .requestMatchers("/**").permitAll())
+                    .anyRequest().authenticated())
 
             .formLogin((form) -> form
                     .loginPage("/user/login")
                     .loginProcessingUrl("/login")
+//                    .usernameParameter("email")
                     .defaultSuccessUrl("/"))
 
-            .logout(out -> out
+            .logout((out) -> out
                     .logoutSuccessUrl("/")
                     .logoutUrl("/logout")
             );

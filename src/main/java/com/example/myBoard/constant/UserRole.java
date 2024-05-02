@@ -1,4 +1,4 @@
-package com.example.myBoard.config;
+package com.example.myBoard.constant;
 
 import lombok.Getter;
 

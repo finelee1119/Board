@@ -1,6 +1,6 @@
 package com.example.myBoard.entity;
 
-import com.example.myBoard.config.UserRole;
+import com.example.myBoard.constant.UserRole;
 import jakarta.persistence.*;
 import lombok.Data;
 

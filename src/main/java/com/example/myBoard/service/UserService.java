@@ -1,6 +1,6 @@
 package com.example.myBoard.service;
 
-import com.example.myBoard.config.UserRole;
+import com.example.myBoard.constant.UserRole;
 import com.example.myBoard.dto.UserCreateForm;
 import com.example.myBoard.entity.UserAccount;
 import jakarta.persistence.EntityManager;
