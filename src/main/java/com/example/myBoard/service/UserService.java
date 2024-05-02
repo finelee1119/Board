@@ -4,6 +4,8 @@ import com.example.myBoard.config.UserRole;
 import com.example.myBoard.dto.UserCreateForm;
 import com.example.myBoard.entity.UserAccount;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,8 +17,10 @@ public class UserService {
     PasswordEncoder passwordEncoder;
 
     @Autowired
+    @PersistenceContext
     EntityManager em;
 
+    @Transactional
     public void createUser(UserCreateForm userCreateForm) {
         UserAccount account = new UserAccount();
         account.setUserId(userCreateForm.getUsername());
